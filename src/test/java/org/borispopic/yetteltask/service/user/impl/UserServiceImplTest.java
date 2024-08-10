@@ -54,26 +54,25 @@ class UserServiceImplTest {
                         .createdDate(tesCreatedLocalDateTime)
                         .modifiedDate(tesUpdatedLocalDateTime)
                         .birthDate(testBirthdate)
-                        .build());
+                        .build()
+                );
 
         when(userAndUserEntityMapper.toUserEntity(any(User.class)))
-                .thenReturn(
-                        UserEntity.builder()
-                                .id(1)
-                                .firstName("Test First Name")
-                                .lastName("Test Last Name")
-                                .middleName("Test Middle Name")
-                                .phone("Test Phone")
-                                .email("Test Email")
-                                .createdDate(tesCreatedLocalDateTime)
-                                .modifiedDate(tesUpdatedLocalDateTime)
-                                .birthDate(testBirthdate)
-                                .build()
+                .thenReturn(UserEntity.builder()
+                        .id(1)
+                        .firstName("Test First Name")
+                        .lastName("Test Last Name")
+                        .middleName("Test Middle Name")
+                        .phone("Test Phone")
+                        .email("Test Email")
+                        .createdDate(tesCreatedLocalDateTime)
+                        .modifiedDate(tesUpdatedLocalDateTime)
+                        .birthDate(testBirthdate)
+                        .build()
                 );
 
         when((userAndUserEntityMapper.toUser(any(UserEntity.class))))
-                .thenReturn(
-                        User.builder()
+                .thenReturn(User.builder()
                                 .id(1)
                                 .firstName("Test First Name")
                                 .lastName("Test Last Name")
@@ -99,7 +98,7 @@ class UserServiceImplTest {
                 .build();
 
         var returnedUser = userService.createUser(testUser);
-        assertNotNull(returnedUser.get(), "THe returned created user should not be null");
+        assertNotNull(returnedUser.get(), "The returned created user should not be null");
         assertNotEquals(returnedUser.get(), testUser);
         assertEquals(returnedUser.get().getId(), testUser.getId());
         assertEquals(returnedUser.get().getFirstName(), testUser.getFirstName());
@@ -107,7 +106,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    void shoulReturndUpdatedUser() {
+    void shouldReturndUpdatedUser() {
         when(userRepository.save(any(UserEntity.class)))
                 .thenReturn(UserEntity.builder()
                         .id(1)
@@ -119,37 +118,50 @@ class UserServiceImplTest {
                         .createdDate(tesCreatedLocalDateTime)
                         .modifiedDate(tesUpdatedLocalDateTime)
                         .birthDate(testBirthdate)
-                        .build());
+                        .build()
+                );
 
         when(userAndUserEntityMapper.toUserEntity(any(User.class)))
-                .thenReturn(
-                        UserEntity.builder()
-                                .id(1)
-                                .firstName("Test First Name")
-                                .lastName("Test Last Name")
-                                .middleName("Test Middle Name")
-                                .phone("Test Phone")
-                                .email("Test Email")
-                                .createdDate(tesCreatedLocalDateTime)
-                                .modifiedDate(tesUpdatedLocalDateTime)
-                                .birthDate(testBirthdate)
-                                .build()
+                .thenReturn(UserEntity.builder()
+                        .id(1)
+                        .firstName("Test First Name")
+                        .lastName("Test Last Name")
+                        .middleName("Test Middle Name")
+                        .phone("Test Phone")
+                        .email("Test Email")
+                        .createdDate(tesCreatedLocalDateTime)
+                        .modifiedDate(tesUpdatedLocalDateTime)
+                        .birthDate(testBirthdate)
+                        .build()
                 );
 
         when((userAndUserEntityMapper.toUser(any(UserEntity.class))))
-                .thenReturn(
-                        User.builder()
-                                .id(1)
-                                .firstName("Test First Name")
-                                .lastName("Test Last Name")
-                                .middleName("Test Middle Name")
-                                .phone("Test Phone")
-                                .email("Test Email")
-                                .createdDate(tesCreatedLocalDateTime)
-                                .modifiedDate(tesUpdatedLocalDateTime)
-                                .birthDate(testBirthdate)
-                                .build()
+                .thenReturn(User.builder()
+                        .id(1)
+                        .firstName("Test First Name")
+                        .lastName("Test Last Name")
+                        .middleName("Test Middle Name")
+                        .phone("Test Phone")
+                        .email("Test Email")
+                        .createdDate(tesCreatedLocalDateTime)
+                        .modifiedDate(tesUpdatedLocalDateTime)
+                        .birthDate(testBirthdate)
+                        .build()
                 );
+        when(userRepository.findById(anyLong())).thenReturn(
+                Optional.of(UserEntity.builder()
+                        .id(1)
+                        .firstName("Test First Name")
+                        .lastName("Test Last Name")
+                        .middleName("Test Middle Name")
+                        .phone("Test Phone")
+                        .email("Test Email")
+                        .createdDate(tesCreatedLocalDateTime)
+                        .modifiedDate(tesUpdatedLocalDateTime)
+                        .birthDate(testBirthdate)
+                        .build()
+                )
+        );
 
         User testUser = User.builder()
                 .id(1)
@@ -169,39 +181,27 @@ class UserServiceImplTest {
         assertEquals(returnedUser.get().getId(), testUser.getId());
         assertEquals(returnedUser.get().getFirstName(), testUser.getFirstName());
         assertEquals(returnedUser.get().getLastName(), testUser.getLastName());
+        assertNotEquals(tesUpdatedLocalDateTime, returnedUser.get().getModifiedDate());
     }
 
     @Test
     void shouldDeleteUser() {
         when(userRepository.findById(anyLong())).thenReturn(
-                Optional.of(
-                        UserEntity.builder()
-                                .id(1)
-                                .firstName("Test First Name")
-                                .lastName("Test Last Name")
-                                .middleName("Test Middle Name")
-                                .phone("Test Phone")
-                                .email("Test Email")
-                                .createdDate(tesCreatedLocalDateTime)
-                                .modifiedDate(tesUpdatedLocalDateTime)
-                                .birthDate(testBirthdate)
-                                .build()
-
+                Optional.of(UserEntity.builder()
+                        .id(1)
+                        .firstName("Test First Name")
+                        .lastName("Test Last Name")
+                        .middleName("Test Middle Name")
+                        .phone("Test Phone")
+                        .email("Test Email")
+                        .createdDate(tesCreatedLocalDateTime)
+                        .modifiedDate(tesUpdatedLocalDateTime)
+                        .birthDate(testBirthdate)
+                        .build()
                 )
         );
 
-        when(userAndUserEntityMapper.toUser(UserEntity
-                .builder()
-                .id(1)
-                .firstName("Test First Name")
-                .lastName("Test Last Name")
-                .middleName("Test Middle Name")
-                .phone("Test Phone")
-                .email("Test Email")
-                .createdDate(tesCreatedLocalDateTime)
-                .modifiedDate(tesUpdatedLocalDateTime)
-                .birthDate(testBirthdate)
-                .build())
+        when(userAndUserEntityMapper.toUser(any(UserEntity.class))
         ).thenReturn(User.builder()
                 .id(1)
                 .firstName("Test First Name")

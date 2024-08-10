@@ -125,8 +125,8 @@ class UserControllerImplTest {
 
     @Test
     void shouldBeSuccessful() throws Exception {
-        when(userService.deleteUser(anyLong())).thenReturn(Optional.of(
-                User.builder()
+        when(userService.deleteUser(anyLong())).thenReturn(
+                Optional.of(User.builder()
                         .id(22)
                         .firstName("TestFirstName")
                         .lastName("TestLastName")
@@ -149,14 +149,14 @@ class UserControllerImplTest {
 
     @Test
     void shouldFetchUser() throws Exception {
-        when(userService.getUser(anyLong())).thenReturn(Optional.of(
-                        User.builder()
-                                .id(22)
-                                .firstName("TestFirstName")
-                                .lastName("TestLastName")
-                                .birthDate(new Date(1985, 8, 2))
-                                .phone("12345678")
-                                .build()
+        when(userService.getUser(anyLong())).thenReturn(
+                Optional.of(User.builder()
+                        .id(22)
+                        .firstName("TestFirstName")
+                        .lastName("TestLastName")
+                        .birthDate(new Date(1985, 8, 2))
+                        .phone("12345678")
+                        .build()
                 )
         );
 

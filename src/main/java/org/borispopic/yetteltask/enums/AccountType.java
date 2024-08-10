@@ -17,8 +17,8 @@ public enum AccountType {
 
     @JsonCreator
     public static AccountType getAccountType(String accountType) {
-        for (AccountType at : AccountType.values()) {
-            if (at.getValue().equalsIgnoreCase(accountType)) {
+        for ( AccountType at : AccountType.values() ) {
+            if ( at.getValue().equalsIgnoreCase(accountType) ) {
                 return at;
             }
         }

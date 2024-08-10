@@ -1,4 +1,4 @@
-Hi,
+Hi
 
 This project was developed as part of the task assigned by Yettel Bank Serbia
 for the job application.
@@ -6,15 +6,26 @@ for the job application.
 Below are the instructions for testing, compiling, and running the project.
 The project uses Maven, so here are the relevant Maven commands:
 
+NOTE:
+
+Bank account numbers are randomly generated and 20 digits long. In the accounts
+table, there is no constraint on the account numbers. A natural constraint would
+be UNIQUE, but due to certain limits and the purpose of the application, I decided
+to automate the account number generation. Therefore, any intervention regarding
+the account number is very limited, essentially none.
+
 Before you begin:
 
 Java 17, the SDK
-Maven
-Docker
+Maven,
+Docker,
+Microsoft SQL
 
-I tried to send the zip file over Gmail, however mvnw.cmd had been detected by Google so id did not allow me to send it.
-So, I needed to rename it, now It is mvnw.cmdRenameMe. Please rename it, it has to be mvnw.cmd. You may regenerate
-the maven wrapper, but just rename it. If you have any issue after, then my suggestion is to check my GitHub repository.
+I tried to send the zip file over Gmail, however mvnw.cmd had been detected by Google,
+so id did not allow me to send it. Therefore, I needed to rename it, now It is called
+mvnw.cmdRenameMe. Please rename it, it has to be mvnw.cmd. You may regenerate the maven
+wrapper, but just rename it. If you have any issue after, then my suggestion is to check
+my GitHub repository.
 
 https://github.com/borispopicbusiness/yetteltaskborispopic
 
@@ -54,7 +65,7 @@ For example, to get the user with ID 1:
 
 To create a new user, send a POST request with the necessary data:
 
-curl -X POST -H "Content-Type: application/json" "http://localhost:8080/api/v1/user/create" -d '{ \
+curl -X POST -H "Content-Type: application/json" "http://localhost:8080/api/v1/user/create" -d '{
     "first_name": "Boris",
     "last_name": "Popic",
     "email": "borispopic.business@gmail.com",
@@ -85,7 +96,7 @@ The response will be the DTO of the deleted user.
 
 To update user information, send a PUT request with the updated data:
 
-curl -X PUT -H "Content-Type: application/json" "http://localhost:8080/api/v1/user/update" -d '{ \
+curl -X PUT -H "Content-Type: application/json" "http://localhost:8080/api/v1/user/update" -d '{
     "id": "4",
     "first_name": "Boris",
     "last_name": "Popic",
@@ -116,7 +127,7 @@ The response will be the corresponding account DTO.
 
 To create a new account:
 
-curl -X POST -H "Content-Type: application/json" "http://localhost:8080/api/v1/account/create" -d '{ \
+curl -X POST -H "Content-Type: application/json" "http://localhost:8080/api/v1/account/create" -d '{
     "owner_id": "2",
     "balance": "350.00",
     "account_type": "CHECKING"

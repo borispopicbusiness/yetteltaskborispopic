@@ -30,7 +30,7 @@ public class UserControllerImpl implements UserController {
 
         Optional<User> createdUser = userService.createUser(userAndUserDTOMapper.toUser(user));
 
-        if(createdUser.isPresent()) {
+        if ( createdUser.isPresent() ) {
             log.info("/api/v1/user/create user created.");
         } else {
             log.info("/api/v1/user/create user not created");
@@ -48,13 +48,13 @@ public class UserControllerImpl implements UserController {
 
         Optional<User> updatedUser = userService.updateUser(userAndUserDTOMapper.toUser(user));
 
-        if(updatedUser.isPresent()){
+        if ( updatedUser.isPresent() ) {
             log.info("/api/v1/user/update user updated");
         } else {
             log.info("/api/v1/user/update user not updated");
         }
 
-        return updatedUser.map( value -> ResponseEntity.ok(
+        return updatedUser.map(value -> ResponseEntity.ok(
                 userAndUserDTOMapper.toUserDTO(value)
         )).orElseGet(() -> ResponseEntity.badRequest().body(null));
     }
@@ -62,17 +62,17 @@ public class UserControllerImpl implements UserController {
     @DeleteMapping("/delete/{id}")
     @Override
     public ResponseEntity<UserDTO> deleteUser(@PathVariable(name = "id") long userId) {
-        log.info("/api/v1/user/delete/" + userId +" triggered.");
+        log.info("/api/v1/user/delete/" + userId + " triggered.");
 
         Optional<User> deletedUser = userService.deleteUser(userId);
 
-        if(deletedUser.isPresent()) {
-            log.info("/api/v1/user/get/" + userId +" deleted object");
+        if ( deletedUser.isPresent() ) {
+            log.info("/api/v1/user/get/" + userId + " deleted object");
         } else {
-            log.info("/api/v1/user/get/" + userId +" found no object");
+            log.info("/api/v1/user/get/" + userId + " found no object");
         }
 
-        return deletedUser.map( value -> ResponseEntity.ok(
+        return deletedUser.map(value -> ResponseEntity.ok(
                 userAndUserDTOMapper.toUserDTO(value)
         )).orElseGet(() -> ResponseEntity.badRequest().body(null));
     }
@@ -80,17 +80,17 @@ public class UserControllerImpl implements UserController {
     @GetMapping("/get/{id}")
     @Override
     public ResponseEntity<UserDTO> getUser(@PathVariable(name = "id") long userId) {
-        log.info("/api/v1/user/get/" + userId +" triggered.");
+        log.info("/api/v1/user/get/" + userId + " triggered.");
 
         Optional<User> foundUser = userService.getUser(userId);
 
-        if (foundUser.isPresent()) {
+        if ( foundUser.isPresent() ) {
             log.info("/api/v1/user/get/" + userId + " found object");
         } else {
             log.info("/api/v1/user/get/" + userId + " found no object");
         }
 
-        return foundUser.map( value -> ResponseEntity.ok(userAndUserDTOMapper.toUserDTO(value)))
+        return foundUser.map(value -> ResponseEntity.ok(userAndUserDTOMapper.toUserDTO(value)))
                 .orElseGet(() -> ResponseEntity.noContent().build());
     }
 }

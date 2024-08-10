@@ -17,8 +17,8 @@ public enum AccountStatus {
 
     @JsonCreator
     public static AccountStatus getAccountStatus(String accountStatus) {
-        for (AccountStatus as : AccountStatus.values()) {
-            if (as.getValue().equalsIgnoreCase(accountStatus)) {
+        for ( AccountStatus as : AccountStatus.values() ) {
+            if ( as.getValue().equalsIgnoreCase(accountStatus) ) {
                 return as;
             }
         }

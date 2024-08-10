@@ -20,7 +20,7 @@ CREATE TABLE accounts (
         last_name NVARCHAR(255),
         account_number NVARCHAR(20),
         account_type VARCHAR(8) CHECK (account_type in ('SAVINGS', 'CHECKING', 'BUSINESS')) NOT NULL DEFAULT 'CHECKING',
-        status NVARCHAR(10) CHECK (status in ('ACTIVE', 'INACTIVE', 'CLOSED')),
+        account_status VARCHAR(8) CHECK (account_status in ('ACTIVE', 'INACTIVE', 'CLOSED')) NOT NULL DEFAULT 'INACTIVE',
         balance DECIMAL(19, 4),
         min_balance DECIMAL(19, 4),
         created_date DATETIME2,

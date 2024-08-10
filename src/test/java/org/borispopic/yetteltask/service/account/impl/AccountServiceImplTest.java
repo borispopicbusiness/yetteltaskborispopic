@@ -75,15 +75,14 @@ class AccountServiceImplTest {
         when(userRepository.findById(anyLong())).thenReturn(Optional.of(testUserEntity));
 
         when(accountAndAccountEntityMapper.toAccount(any(AccountEntity.class)))
-                .thenReturn(
-                        Account.builder()
-                                .id(1)
-                                .ownerId(testUserEntity.getId())
-                                .balance(BigDecimal.valueOf(300))
-                                .createdDate(tesCreatedLocalDateTime)
-                                .modifiedDate(tesUpdatedLocalDateTime)
-                                .minBalance(BigDecimal.valueOf(15))
-                                .build()
+                .thenReturn(Account.builder()
+                        .id(1)
+                        .ownerId(testUserEntity.getId())
+                        .balance(BigDecimal.valueOf(300))
+                        .createdDate(tesCreatedLocalDateTime)
+                        .modifiedDate(tesUpdatedLocalDateTime)
+                        .minBalance(BigDecimal.valueOf(15))
+                        .build()
                 );
 
         when(accountRepository.save(any(AccountEntity.class))).thenReturn(testAccountEntity);
@@ -102,12 +101,11 @@ class AccountServiceImplTest {
     @Test
     void shouldFetchAccount() {
         when(accountRepository.findById(anyLong())).thenReturn(
-                Optional.of(
-                        AccountEntity.builder()
-                                .id(1)
-                                .ownerId(3L)
-                                .balance(BigDecimal.valueOf(300))
-                                .build()
+                Optional.of(AccountEntity.builder()
+                        .id(1)
+                        .ownerId(3L)
+                        .balance(BigDecimal.valueOf(300))
+                        .build()
                 )
         );
 

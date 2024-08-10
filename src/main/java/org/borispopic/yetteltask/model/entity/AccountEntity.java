@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.borispopic.yetteltask.enums.AccountStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -50,5 +49,5 @@ public class AccountEntity {
     private String accountType;
 
     @Column(name = "account_status")
-    private AccountStatus accountStatus;
+    private String accountStatus;
 }

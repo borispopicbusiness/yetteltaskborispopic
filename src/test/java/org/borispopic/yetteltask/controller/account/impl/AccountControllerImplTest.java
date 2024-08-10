@@ -52,12 +52,10 @@ class AccountControllerImplTest {
         when(accountAndAccountDTOMapper.toAccountDTO(any(Account.class))).thenReturn(testAccountDTO);
         when(accountService.createAccount(any(Account.class))).thenReturn(Optional.of(testAccount));
 
-        mvc.perform(
-                        post("/api/v1/account/create")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content("{\"id\":23,\"ownerId\":15,\"balance\":567.32}")
-                )
-                .andExpect(status().isOk())
+        mvc.perform(post("/api/v1/account/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"id\":23,\"ownerId\":15,\"balance\":567.32}")
+                ).andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON));
     }
 

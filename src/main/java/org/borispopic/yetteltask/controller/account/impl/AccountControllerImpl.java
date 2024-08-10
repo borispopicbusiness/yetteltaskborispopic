@@ -37,7 +37,7 @@ public class AccountControllerImpl implements AccountController {
 
         var foundAccount = accountService.getAccount(userId);
 
-        if (foundAccount.isPresent()) {
+        if ( foundAccount.isPresent() ) {
             log.info("/api/v1/account/get/{userId} found account");
         } else {
             log.info("/api/v1/account/get/{userId} found no account");
