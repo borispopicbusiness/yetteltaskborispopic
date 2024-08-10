@@ -6,6 +6,19 @@ for the job application.
 Below are the instructions for testing, compiling, and running the project.
 The project uses Maven, so here are the relevant Maven commands:
 
+Before you begin:
+
+Java 17, the SDK
+Maven
+Docker
+
+I tried to send the zip file over Gmail, however mvnw.cmd had been detected by Google so id did not allow me to send it.
+So, I needed to rename it, now It is mvnw.cmdRenameMe. Please rename it, it has to be mvnw.cmd. You may regenerate
+the maven wrapper, but just rename it. If you have any issue after, then my suggestion is to check my GitHub repository.
+
+https://github.com/borispopicbusiness/yetteltaskborispopic
+
+
 Testing:
 
     mvn test
