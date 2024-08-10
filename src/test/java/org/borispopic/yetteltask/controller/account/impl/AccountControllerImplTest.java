@@ -35,7 +35,7 @@ class AccountControllerImplTest {
     private MockMvc mvc;
 
     @Test
-    void createAccount() throws Exception {
+    void shouldCreateAccount() throws Exception {
         AccountDTO testAccountDTO = AccountDTO.builder()
                 .id(23)
                 .ownerId(15)
@@ -62,7 +62,7 @@ class AccountControllerImplTest {
     }
 
     @Test
-    void getAccount() throws Exception {
+    void shouldFetchAccount() throws Exception {
 
         AccountDTO testAccountDTO = AccountDTO.builder()
                 .id(23)

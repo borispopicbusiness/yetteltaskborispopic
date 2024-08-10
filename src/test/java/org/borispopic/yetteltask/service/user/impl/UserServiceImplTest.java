@@ -221,7 +221,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    void getUser() {
+    void shouldFetchUser() {
         when(userRepository.findById(anyLong())).thenReturn(
                 Optional.of(UserEntity
                         .builder()

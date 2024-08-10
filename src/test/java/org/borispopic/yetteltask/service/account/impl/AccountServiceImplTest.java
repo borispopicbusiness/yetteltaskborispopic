@@ -49,7 +49,7 @@ class AccountServiceImplTest {
     }
 
     @Test
-    void createAccount() {
+    void shouldCreateAccount() {
         UserEntity testUserEntity = UserEntity.builder()
                 .id(2)
                 .birthDate(testBirthdate)
@@ -100,7 +100,7 @@ class AccountServiceImplTest {
     }
 
     @Test
-    void getAccount() {
+    void shouldFetchAccount() {
         when(accountRepository.findById(anyLong())).thenReturn(
                 Optional.of(
                         AccountEntity.builder()

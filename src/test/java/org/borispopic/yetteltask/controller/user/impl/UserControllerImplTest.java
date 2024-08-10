@@ -148,7 +148,7 @@ class UserControllerImplTest {
     }
 
     @Test
-    void getUser() throws Exception {
+    void shouldFetchUser() throws Exception {
         when(userService.getUser(anyLong())).thenReturn(Optional.of(
                         User.builder()
                                 .id(22)

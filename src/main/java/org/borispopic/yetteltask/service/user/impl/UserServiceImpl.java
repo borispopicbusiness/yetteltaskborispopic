@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> deleteUser(long userId) {
         var foundUser = userRepository.findById(userId);
+
         if(foundUser.isPresent()){
             userRepository.delete(foundUser.orElse(null));
             return Optional.of(userAndUserEntityMapper.toUser(foundUser.get()));

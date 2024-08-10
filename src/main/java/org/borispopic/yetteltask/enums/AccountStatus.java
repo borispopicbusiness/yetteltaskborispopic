@@ -8,9 +8,9 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum AccountStatus {
-    ACTIVE("Active"),
-    INACTIVE("Inactive"),
-    CLOSED("Closed");
+    ACTIVE("ACTIVE"),
+    INACTIVE("INACTIVE"),
+    CLOSED("CLOSED");
 
     @JsonValue
     private final String value;
